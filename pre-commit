@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Check if any commit messages are uppercase.
+if git rev-list --all --not --grep='^[a-z]' --invert-grep --quiet; then
+    echo "ERROR: Commit message must start with a lowercase letter."
